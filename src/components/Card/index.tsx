@@ -29,7 +29,6 @@ export default function Card(props) {
     });
     const data = await api.json();
     setPokeimg(data);
-    console.log(data);
     setLoadiang({ ...loading, loading: false });
   };
 

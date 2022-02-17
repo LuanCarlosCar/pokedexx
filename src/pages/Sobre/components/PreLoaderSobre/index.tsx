@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Lottie from "react-lottie";
-import animationData from "../../../../assets/lottie/loading2.json";
+import animationData from "../../../../assets/lottie/loading3.json";
 import { ContainerLoading } from "./styled";
-import { PropsLoadingSobre } from "./type";
 
 function PreLoaderSobre() {
-  const [animationState, setAnimationState] = useState<PropsLoadingSobre>({
-    isStopped: false,
-    isPaused: false,
-    isLoop: true,
-  });
   const defaultOptions = {
     loop: true,
     autoplay: true,
+    isPaused: false,
     animationData: animationData,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice",
@@ -26,8 +21,8 @@ function PreLoaderSobre() {
         options={defaultOptions}
         height={500}
         width={500}
-        isStopped={animationState.isStopped}
-        isPaused={animationState.isPaused}
+        isStopped={false}
+        isPaused={false}
       />
     </ContainerLoading>
   );

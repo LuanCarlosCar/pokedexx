@@ -23,10 +23,10 @@ export default function Header() {
             <LinkPage to="/">My Pokemons</LinkPage>
           </li>
           <li>
-            <LinkPage to="/sobre">My items</LinkPage>
+            <LinkPage to="/sobre">PokeDetail</LinkPage>
           </li>
           <li>
-            <LinkPage to="/">My sla oq</LinkPage>
+            <LinkPage to="/">Creating</LinkPage>
           </li>
         </ul>
       </ContainerNav>

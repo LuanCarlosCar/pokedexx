@@ -19,7 +19,7 @@ export default function GraficTooltip(props) {
       ...item,
       name: item.stat.name,
     }));
-    console.log(newData);
+
     setDateGra(newData);
   }
   useEffect(() => {
@@ -64,7 +64,7 @@ export default function GraficTooltip(props) {
 
         <Bar dataKey="base_stat" barSize={20} fill="#8884d8">
           {colors.map((item) => (
-            <Cell fill={item.cor} />
+            <Cell key={item.cor} fill={item.cor} />
           ))}
         </Bar>
       </BarChart>

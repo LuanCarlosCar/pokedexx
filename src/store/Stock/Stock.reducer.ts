@@ -1,11 +1,14 @@
-import { actions } from "./Stock.actions";
+import { actions, PropsAction } from "./Stock.actions";
 
 type Action = {
   type: keyof typeof actions;
-  payload?: any;
+  payload: PropsAction;
 };
 
-export default function mathReducer(state: string = "pikachu", action: Action) {
+export default function mathReducer(
+  state: PropsAction = { name: "pikachu", id: 25 },
+  action: Action
+) {
   switch (action.type) {
     case actions.INCREMENT:
       return (state = action.payload);

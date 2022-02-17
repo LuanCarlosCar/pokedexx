@@ -1,5 +1,6 @@
 import { Typeloading } from "components/Card/type";
 import GraficTooltip from "components/GraficTooltip";
+import PokeEvolution from "components/PokeEvolution";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
@@ -14,25 +15,20 @@ import {
   ContainerFlex,
   TitleH,
 } from "./style";
-import { PokeInfoDashboard } from "./type";
+import { PokeInfoDashboard, PokeProps, PropsPokeEvolution } from "./type";
 
 export default function Sobre() {
   const [loading, setLoadiang] = useState<Typeloading>({ loading: true });
-  const stock = useSelector<RootState>((state) => state);
-  console.log("oi", stock);
+  const stock = useSelector<RootState>((state) => state.stock);
+  const [pokeProps, setPokeProps] = useState<PokeProps | any>();
   const [pokeDetail, setPokeDetail] = useState<PokeInfoDashboard>();
+  const [pokeEvolution, setPokeEvolution] = useState<any>();
 
   const imprimirPokemons = async () => {
+    if (!pokeProps) return;
     setLoadiang({ ...loading, loading: true });
-    const api = await fetch(`https://pokeapi.co/api/v2/pokemon/${stock}`, {
-      method: "GET",
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "content-type": "application/json",
-      },
-    });
-    const api2 = await fetch(
-      `https://pokeapi.co/api/v2/evolution-chain/${stock}`,
+    const api = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokeProps?.name}`,
       {
         method: "GET",
         headers: {
@@ -43,14 +39,19 @@ export default function Sobre() {
     );
     const data = await api.json();
     setPokeDetail(data);
+
     setLoadiang({ ...loading, loading: false });
   };
 
   useEffect(() => {
-    imprimirPokemons();
+    setPokeProps(stock);
   }, []);
 
-  function renderComponentLoad() {
+  useEffect(() => {
+    imprimirPokemons();
+  }, [pokeProps]);
+
+  function renderComponent() {
     if (loading?.loading) {
       return <PreLoaderSobre />;
     }
@@ -70,14 +71,16 @@ export default function Sobre() {
           {pokeDetail?.abilities.map((item) => (
             <>
               <CardDescription
+                key={item.ability.name}
                 itemNome={item.ability.name}
                 url={item.ability.url}
               />
             </>
           ))}
         </ContainerFlex>
+        {/* <PokeEvolution pokeid={pokeProps?.id} /> */}
       </ContainerSobre>
     );
   }
-  return <>{renderComponentLoad()}</>;
+  return <>{renderComponent()}</>;
 }

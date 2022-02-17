@@ -22,3 +22,24 @@ interface PropsAbility {
   name: string;
   url?: string;
 }
+
+export interface PokeProps {
+  name: string;
+  id?: number;
+}
+
+export interface PropsPokeEvolution {
+  chain: PropsChain;
+}
+interface PropsChain {
+  evolves_to: PropsEvolvesTo;
+}
+
+interface PropsEvolvesTo {
+  species: PropsSpecies;
+}
+
+interface PropsSpecies {
+  name: string;
+  url?: string;
+}

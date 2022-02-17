@@ -14,7 +14,6 @@ export default function CardDescription(props) {
     });
     const data = await api.json();
     setEffect(data);
-    console.log("dd", effect);
   };
   useEffect(() => {
     imprimirPokemons();

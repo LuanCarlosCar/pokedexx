@@ -2,12 +2,13 @@ export const actions = {
   INCREMENT: "INCREMENT",
   DECREMENT: "DECREMENT",
 };
-interface props {
+
+export interface PropsAction {
   name: string;
   id?: number;
 }
 
-export function increment({ name, id }: props) {
+export function increment({ name, id }: PropsAction) {
   return { type: actions.INCREMENT, payload: { name, id } };
 }
 
