@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from "recharts";
+import { lighten } from "polished";
 
 export default function GraficTooltip(props) {
   const { item } = props;
@@ -41,9 +42,6 @@ export default function GraficTooltip(props) {
     {
       cor: "green",
     },
-    {
-      cor: "pink",
-    },
   ];
   return (
     <ResponsiveContainer width="100%" aspect={4}>
@@ -64,8 +62,9 @@ export default function GraficTooltip(props) {
 
         <Bar dataKey="base_stat" barSize={20} fill="#8884d8">
           {colors.map((item) => (
-            <Cell key={item.cor} fill={item.cor} />
+            <Cell key={item.cor} fill={lighten(0.2, item.cor)} />
           ))}
+          <Cell key={item.cor} fill={lighten(0.04, "pink")} />
         </Bar>
       </BarChart>
     </ResponsiveContainer>

@@ -79,7 +79,18 @@ export default function Card(props) {
     );
   }
   function renderColor() {
-    if (!pokeColor?.color.name) return "red";
+    if (!pokeColor?.color.name) {
+      return "red";
+    }
+    if (pokeColor?.color.name === "pink") {
+      return lighten(0.01, "pink");
+    }
+    if (pokeColor?.color.name === "white") {
+      return lighten(0.35, "blue");
+    }
+    if (pokeColor?.color.name === "yellow") {
+      return lighten(0.1, "yellow");
+    }
     return lighten(0.2, pokeColor?.color.name);
   }
 
