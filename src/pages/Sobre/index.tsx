@@ -1,3 +1,4 @@
+import ButtonExit from "components/ButtonExit";
 import { Typeloading } from "components/Card/type";
 import GraficTooltip from "components/GraficTooltip";
 import PokeEvolution from "components/PokeEvolution";
@@ -58,6 +59,7 @@ export default function Sobre() {
 
     return (
       <ContainerSobre>
+        <ButtonExit />
         <TitleDeshboard>{pokeDetail?.name}</TitleDeshboard>
         <ContainerImg>
           <ImgDeshboard src={pokeDetail?.sprites.other?.home?.front_default} />

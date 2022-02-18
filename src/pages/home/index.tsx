@@ -15,7 +15,7 @@ export default function Home() {
 
   const imprimirPokemons = async () => {
     const api = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100",
+      "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=400",
       {
         method: "GET",
         headers: {
