@@ -23,9 +23,19 @@ export default function CampoProcura(props) {
         placeholder="Pesquise seu pokemon"
         inputProps={{ "aria-label": "Pesquise seu pokemon" }}
         fullWidth
-        onChange={(ev) => setBusca(ev.target.value)}
+        onChange={(ev) => {
+          ev.preventDefault();
+          setBusca(ev.target.value);
+        }}
       />
-      <IconButton type="submit" sx={{ p: "10px" }} aria-label="search">
+      <IconButton
+        type="submit"
+        sx={{ p: "10px" }}
+        aria-label="search"
+        onClick={(ev) => {
+          ev.preventDefault();
+        }}
+      >
         <SearchIcon />
       </IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
