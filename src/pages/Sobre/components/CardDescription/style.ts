@@ -41,7 +41,7 @@ export const ContainerDescription = styled.div`
   word-wrap: break-word;
   position: absolute;
   bottom: 55px;
-  background: red;
+  background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   box-sizing: border-box;
   border-radius: 4px;
