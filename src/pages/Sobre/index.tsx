@@ -60,8 +60,7 @@ export default function Sobre() {
       <ContainerSobre>
         <TitleDeshboard>{pokeDetail?.name}</TitleDeshboard>
         <ContainerImg>
-          <ImgDeshboard src={pokeDetail?.sprites.front_default} />
-          <ImgDeshboard src={pokeDetail?.sprites.back_default} />
+          <ImgDeshboard src={pokeDetail?.sprites.other?.home?.front_default} />
         </ContainerImg>
 
         <GraficTooltip item={pokeDetail} />

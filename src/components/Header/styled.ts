@@ -5,7 +5,7 @@ export const ContainerHeader = styled.header`
   position: fixed;
   width: 30vw;
   height: 100vh;
-  background-color: #db4a39;
+  background-image: linear-gradient(#574ae8, #3ea1db);
   font-family: "Poppins", sans-serif;
   text-align: center;
 

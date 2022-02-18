@@ -13,3 +13,12 @@ export const ContainerHomer = styled.main`
 export const TitleHome = styled.h1`
   font-size: 20px;
 `;
+export const ContainerSerch = styled.div`
+  grid-column: span 3;
+  margin-bottom: 20px;
+
+  input {
+    width: 100%;
+    height: 50px;
+  }
+`;

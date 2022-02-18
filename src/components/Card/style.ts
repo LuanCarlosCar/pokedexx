@@ -1,17 +1,23 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 interface propsImg {
-  fundo: string;
+  fundo?: string;
 }
-export const ContainerCard = styled.div`
+export const ContainerCard = styled.div<propsImg>`
   text-align: center;
   border-radius: 1.875rem;
   transition: 0.5s;
   cursor: pointer;
   box-sizing: border-box;
+  transition: 0ms.3;
 
   &:hover {
-    background-color: #dcdcdc;
+    box-shadow: inset 0 0 1em ${(props) => props.fundo},
+      0 0 1em ${(props) => props.fundo};
+    transform: translatey(-5%);
+
+    img {
+    }
   }
 `;
 
@@ -24,8 +30,8 @@ export const StyleContainer = styled.div`
 `;
 
 export const PokeImage = styled.img`
-  width: 12.5rem;
-  height: 12.5rem;
+  width: 11rem;
+  height: 11rem;
 
   // box-sizing: border-box;
 `;
