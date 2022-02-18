@@ -44,6 +44,7 @@ export const ContainerDescription = styled.div`
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   box-sizing: border-box;
+  border: 2px solid #d3d3d3;
   border-radius: 4px;
   visibility: hidden;
   opacity: 0;
