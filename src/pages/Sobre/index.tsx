@@ -1,5 +1,6 @@
 import ButtonExit from "components/ButtonExit";
 import { Typeloading } from "components/Card/type";
+import GraficPizza from "components/GraficPizza";
 import GraficTooltip from "components/GraficTooltip";
 import PokeEvolution from "components/PokeEvolution";
 import React, { useEffect, useState } from "react";
@@ -15,6 +16,9 @@ import {
   Powers,
   ContainerFlex,
   TitleH,
+  ContainerGrid,
+  ContainerPokemon,
+  Grafic,
 } from "./style";
 import { PokeInfoDashboard, PokeProps, PropsPokeEvolution } from "./type";
 
@@ -60,10 +64,15 @@ export default function Sobre() {
     return (
       <ContainerSobre>
         <ButtonExit />
-        <TitleDeshboard>{pokeDetail?.name}</TitleDeshboard>
-        <ContainerImg>
-          <ImgDeshboard src={pokeDetail?.sprites.other?.home?.front_default} />
-        </ContainerImg>
+
+        <ContainerPokemon>
+          <ContainerImg>
+            <ImgDeshboard
+              src={pokeDetail?.sprites.other?.home?.front_default}
+            />
+            <TitleDeshboard>{pokeDetail?.name}</TitleDeshboard>
+          </ContainerImg>
+        </ContainerPokemon>
 
         <GraficTooltip item={pokeDetail} />
 

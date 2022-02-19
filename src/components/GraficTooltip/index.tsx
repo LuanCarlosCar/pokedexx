@@ -44,7 +44,7 @@ export default function GraficTooltip(props) {
     },
   ];
   return (
-    <ResponsiveContainer width="100%" aspect={4}>
+    <ResponsiveContainer width="100%" aspect={5}>
       <BarChart
         width={500}
         height={300}

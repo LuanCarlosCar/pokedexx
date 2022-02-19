@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const rotate = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  
+  }
+`;
 
 export const ContainerSobre = styled.main`
   margin-left: 30vw;
@@ -17,13 +28,15 @@ export const TitleDeshboard = styled.h1`
   margin-bottom: 1rem;
   text-transform: capitalize;
   text-align: center;
+  background: -webkit-linear-gradient(#3ea1db, #574ae8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 `;
 
 export const ContainerImg = styled.div`
-  display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  text-align: center;
 `;
 
 export const ImgDeshboard = styled.img`
@@ -55,5 +68,21 @@ export const ContainerFlex = styled.div`
 export const TitleH = styled.h1`
   text-align: center;
   font-size: 30px;
-  margin-bottom: 10px;
+`;
+
+export const ContainerGrid = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+
+  margin-top: 40px;
+  grid-template-areas:
+    "pokemon grafic"
+    "pokemon  grafic";
+`;
+
+export const ContainerPokemon = styled.div`
+  grid-area: pokemon;
+`;
+export const Grafic = styled.div`
+  grid-area: grafic;
 `;
