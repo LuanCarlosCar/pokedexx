@@ -28,7 +28,7 @@ export const TitleDeshboard = styled.h1`
   margin-bottom: 1rem;
   text-transform: capitalize;
   text-align: center;
-  background: -webkit-linear-gradient(#3ea1db, #574ae8);
+  background: -webkit-linear-gradient(#87cefa, #87cefa);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
@@ -68,6 +68,7 @@ export const ContainerFlex = styled.div`
 export const TitleH = styled.h1`
   text-align: center;
   font-size: 30px;
+  margin: 15px 0;
 `;
 
 export const ContainerGrid = styled.div`

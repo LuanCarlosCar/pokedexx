@@ -4,6 +4,12 @@ export const ContainerHomer = styled.main`
   margin-left: 30vw;
   max-width: 70vw;
   padding: 1rem;
+  #sentinela {
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 10px;
+  }
 `;
 export const TitleHome = styled.h1`
   font-size: 20px;

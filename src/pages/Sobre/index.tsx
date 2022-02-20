@@ -3,6 +3,8 @@ import { Typeloading } from "components/Card/type";
 import GraficPizza from "components/GraficPizza";
 import GraficTooltip from "components/GraficTooltip";
 import PokeEvolution from "components/PokeEvolution";
+import TextDescription from "components/TextDescription";
+import { TypeDescription } from "components/TextDescription/type";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
@@ -13,14 +15,11 @@ import {
   ContainerSobre,
   ImgDeshboard,
   TitleDeshboard,
-  Powers,
   ContainerFlex,
   TitleH,
-  ContainerGrid,
   ContainerPokemon,
-  Grafic,
 } from "./style";
-import { PokeInfoDashboard, PokeProps, PropsPokeEvolution } from "./type";
+import { PokeInfoDashboard, PokeProps } from "./type";
 
 export default function Sobre() {
   const [loading, setLoadiang] = useState<Typeloading>({ loading: true });
@@ -28,6 +27,7 @@ export default function Sobre() {
   const [pokeProps, setPokeProps] = useState<PokeProps | any>();
   const [pokeDetail, setPokeDetail] = useState<PokeInfoDashboard>();
   const [pokeEvolution, setPokeEvolution] = useState<any>();
+  const [description, setDescription] = useState<TypeDescription>();
 
   const imprimirPokemons = async () => {
     if (!pokeProps) return;
@@ -44,8 +44,23 @@ export default function Sobre() {
     );
     const data = await api.json();
     setPokeDetail(data);
+    const api2 = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${pokeProps.id}`,
+      {
+        method: "GET",
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "content-type": "application/json",
+        },
+      }
+    );
+    const data2 = await api2.json();
+    setDescription(data2);
 
     setLoadiang({ ...loading, loading: false });
+  };
+  const ImprimirDescricao = async () => {
+    if (!pokeProps) return;
   };
 
   useEffect(() => {
@@ -54,6 +69,7 @@ export default function Sobre() {
 
   useEffect(() => {
     imprimirPokemons();
+    ImprimirDescricao();
   }, [pokeProps]);
 
   function renderComponent() {
@@ -88,6 +104,8 @@ export default function Sobre() {
             </>
           ))}
         </ContainerFlex>
+        <TitleH>Detalhe</TitleH>
+        <TextDescription pokeProps={pokeProps} description={description} />
         {/* <PokeEvolution pokeid={pokeProps?.id} /> */}
       </ContainerSobre>
     );

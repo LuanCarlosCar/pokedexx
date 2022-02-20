@@ -26,8 +26,8 @@ export const NavbarDescription = styled.ul<Propsname>`
     cursor: pointer;
   }
   li:hover {
-    background-color: #86ff3b;
-    box-shadow: 0 0 0 4px #333, 0 0 0 6px #86ff3b;
+    background-color: #3ea1db;
+    box-shadow: 0 0 0 4px white, 0 0 0 6px #3ea1db;
 
     div {
       visibility: visible;
@@ -44,7 +44,7 @@ export const ContainerDescription = styled.div`
   background: rgba(255, 255, 255, 0.9);
   padding: 20px;
   box-sizing: border-box;
-  border: 2px solid #d3d3d3;
+  border: 2px solid #3ea1db;
   border-radius: 4px;
   visibility: hidden;
   opacity: 0;
@@ -52,6 +52,7 @@ export const ContainerDescription = styled.div`
   transform: translateX(-50%) translateY(0px);
   p {
     line-height: 20px;
+    color: #3ea1db;
   }
 `;
 export const Textname = styled.p`

@@ -15,13 +15,14 @@ export default function Home() {
   const [pokeList, setPokeList] = useState<pokeLista[]>();
   const [busca, setBusca] = useState("");
   const [serchLoading, setSerchLoading] = useState(false);
+  const [pokedex, setPokedex] = useState<Number | any>(20);
   const pokeFilter = pokeList?.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(busca.toLowerCase())
   );
 
   const imprimirPokemons = async () => {
     const api = await fetch(
-      "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100",
+      `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${pokedex}`,
       {
         method: "GET",
         headers: {
@@ -36,6 +37,16 @@ export default function Home() {
 
   useEffect(() => {
     imprimirPokemons();
+  }, [pokedex]);
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        console.log("Esta vizivel", pokedex);
+        setPokedex((currentPageInsideState) => currentPageInsideState + 10);
+      }
+    });
+    intersectionObserver.observe(document.querySelector<any>("#sentinela"));
+    return () => intersectionObserver.disconnect();
   }, []);
 
   function renderPokemons() {
@@ -65,6 +76,7 @@ export default function Home() {
         />
       </ContainerSerch>
       {renderPokemons()}
+      <div id="sentinela">Carregando...</div>
     </ContainerHomer>
   );
 }
