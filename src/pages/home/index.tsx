@@ -76,7 +76,7 @@ export default function Home() {
         />
       </ContainerSerch>
       {renderPokemons()}
-      <div id="sentinela">Carregando...</div>
+      {busca ? "" : <div id="sentinela">Carregando...</div>}
     </ContainerHomer>
   );
 }
