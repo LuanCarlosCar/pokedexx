@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavbarDescription, ContainerDescription, Textname } from "./style";
+import { NavbarDescription, ContainerDescription, TextName } from "./style";
 import { effectEntries } from "./type";
 
 export default function CardDescription(props) {
@@ -22,7 +22,7 @@ export default function CardDescription(props) {
   return (
     <NavbarDescription name={props.itemNome}>
       <li>
-        <Textname>{props?.itemNome}</Textname>
+        <TextName>{props?.itemNome}</TextName>
         <ContainerDescription>
           <p>{effect?.effect_entries[0].effect}</p>
         </ContainerDescription>

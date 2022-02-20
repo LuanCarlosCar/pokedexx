@@ -7,22 +7,22 @@ import {
   ContainerLoading,
 } from "./styled";
 import React from "react";
-import { pokeLista } from "./type";
-import CampoProcura from "components/CampoProcura";
+import { PropsPokeList } from "./type";
+import InputSerch from "components/InputSerch";
 import PreLoaderHomer from "./components/PreLoaderSobre";
 import ButtonNav from "./components/ButtonNav";
 
 export default function Home() {
-  const [pokeList, setPokeList] = useState<pokeLista[]>();
-  const [busca, setBusca] = useState("");
+  const [pokeList, setPokeList] = useState<PropsPokeList[]>();
+  const [serch, setSerch] = useState("");
   const [serchLoading, setSerchLoading] = useState(false);
   const [pokedex, setPokedex] = useState<Number | any>(20);
   const [invisibleHeader, setInvisibleHeader] = useState<boolean>(false);
   const pokeFilter = pokeList?.filter((pokemon) =>
-    pokemon.name.toLowerCase().includes(busca.toLowerCase())
+    pokemon.name.toLowerCase().includes(serch.toLowerCase())
   );
 
-  const imprimirPokemons = async () => {
+  const printPokemons = async () => {
     const api = await fetch(
       `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${pokedex}`,
       {
@@ -38,16 +38,15 @@ export default function Home() {
   };
 
   useEffect(() => {
-    imprimirPokemons();
+    printPokemons();
   }, [pokedex]);
   useEffect(() => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
-        console.log("Esta vizivel", pokedex);
         setPokedex((currentPageInsideState) => currentPageInsideState + 10);
       }
     });
-    intersectionObserver.observe(document.querySelector<any>("#sentinela"));
+    intersectionObserver.observe(document.querySelector<any>("#sentinel"));
     return () => intersectionObserver.disconnect();
   }, []);
 
@@ -59,7 +58,7 @@ export default function Home() {
         setInvisibleHeader(false);
       }
     });
-    intersectionObserver.observe(document.querySelector<any>("#topo"));
+    intersectionObserver.observe(document.querySelector<any>("#top"));
     return () => intersectionObserver.disconnect();
   }, []);
 
@@ -90,15 +89,15 @@ export default function Home() {
   return (
     <ContainerHomer>
       <ContainerSerch>
-        <CampoProcura
+        <InputSerch
           setSerchLoading={setSerchLoading}
-          setBusca={setBusca}
-          busca={busca.toLowerCase()}
+          setSerch={setSerch}
+          serch={serch.toLowerCase()}
         />
       </ContainerSerch>
       {renderButton()}
       {renderPokemons()}
-      {busca ? "" : <div id="sentinela">Carregando...</div>}
+      {serch ? "" : <div id="sentinel">Loading...</div>}
     </ContainerHomer>
   );
 }

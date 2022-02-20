@@ -1,5 +1,4 @@
 import React from "react";
-
 import Lottie from "react-lottie";
 import animationData from "../../../../assets/lottie/loading3.json";
 import { ContainerLoading } from "./styled";

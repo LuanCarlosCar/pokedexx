@@ -10,7 +10,7 @@ export const ContainerHeader = styled.header`
   text-align: center;
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 600;
     color: white;
     margin-top: 1rem;
@@ -18,7 +18,7 @@ export const ContainerHeader = styled.header`
 
   img {
     margin-top: 1rem;
-    width: 10.9375rem; // 175px;
+    width: 11.5rem; // 175px;
     border-radius: 150px;
   }
 `;
@@ -26,12 +26,12 @@ export const ContainerAvatar = styled.div`
   p {
     margin-top: 0.5rem;
     font-weight: 500;
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: white;
   }
 `;
 export const ContainerNav = styled.nav`
-  margin-top: 2rem;
+  margin-top: 3rem;
   // box-sizing: border-box;
   ul {
     list-style: none;
@@ -52,7 +52,7 @@ export const ContainerNav = styled.nav`
 export const LinkPage = styled(Link)`
   text-decoration: none;
   font-weight: 500;
-  font-size: 1.6625rem;
+  font-size: 2rem;
   color: white;
   display: block;
 

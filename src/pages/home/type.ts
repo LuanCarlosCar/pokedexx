@@ -1,4 +1,4 @@
-export interface pokeLista {
+export interface PropsPokeList {
   name: string;
   url: string;
 }

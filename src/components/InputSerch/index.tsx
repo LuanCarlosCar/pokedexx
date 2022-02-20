@@ -13,9 +13,9 @@ import { useNavigate } from "react-router-dom";
 import AlertErro from "./AlertErro";
 import { ContainerError } from "./AlertErro/style";
 
-export default function CampoProcura(props) {
+export default function InputSerch(props) {
   const Navigate = useNavigate();
-  const { setBusca, busca, setSerchLoading } = props;
+  const { setSerch, serch, setSerchLoading } = props;
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState({
     abrir: false,
@@ -35,12 +35,12 @@ export default function CampoProcura(props) {
   };
 
   const BuscaNovoPokemon = async () => {
-    if (!busca) {
+    if (!serch) {
       setOpen({ abrir: true, name: "info", description: "Enter a name." });
       return;
     }
     setSerchLoading(true);
-    await fetch(` https://pokeapi.co/api/v2/pokemon/${busca}`, {
+    await fetch(` https://pokeapi.co/api/v2/pokemon/${serch}`, {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -51,7 +51,7 @@ export default function CampoProcura(props) {
       .then((response) => {
         dispatch(increment({ name: response.name, id: response.id }));
       })
-      .then(() => Navigate("/sobre"))
+      .then(() => Navigate("/detail"))
       .catch((erro) =>
         setOpen({ abrir: true, name: "error", description: "Invalid name!" })
       );
@@ -66,7 +66,7 @@ export default function CampoProcura(props) {
     );
   }
   return (
-    <div id="topo">
+    <div id="top">
       {renderErro()}
       <Paper
         component="form"
@@ -83,7 +83,7 @@ export default function CampoProcura(props) {
           fullWidth
           onChange={(ev) => {
             ev.preventDefault();
-            setBusca(ev.target.value);
+            setSerch(ev.target.value);
           }}
         />
         <IconButton

@@ -1,8 +1,6 @@
 import ButtonExit from "components/ButtonExit";
 import { Typeloading } from "components/Card/type";
-import GraficPizza from "components/GraficPizza";
 import GraficTooltip from "components/GraficTooltip";
-import PokeEvolution from "components/PokeEvolution";
 import TextDescription from "components/TextDescription";
 import { TypeDescription } from "components/TextDescription/type";
 import React, { useEffect, useState } from "react";
@@ -12,7 +10,7 @@ import CardDescription from "./components/CardDescription";
 import PreLoaderSobre from "./components/PreLoaderSobre";
 import {
   ContainerImg,
-  ContainerSobre,
+  ContainerAbout,
   ImgDeshboard,
   TitleDeshboard,
   ContainerFlex,
@@ -21,15 +19,14 @@ import {
 } from "./style";
 import { PokeInfoDashboard, PokeProps } from "./type";
 
-export default function Sobre() {
+export default function PageAbout() {
   const [loading, setLoadiang] = useState<Typeloading>({ loading: true });
   const stock = useSelector<RootState>((state) => state.stock);
   const [pokeProps, setPokeProps] = useState<PokeProps | any>();
   const [pokeDetail, setPokeDetail] = useState<PokeInfoDashboard>();
-  const [pokeEvolution, setPokeEvolution] = useState<any>();
   const [description, setDescription] = useState<TypeDescription>();
 
-  const imprimirPokemons = async () => {
+  const printPokemons = async () => {
     if (!pokeProps) return;
     setLoadiang({ ...loading, loading: true });
     const api = await fetch(
@@ -59,17 +56,13 @@ export default function Sobre() {
 
     setLoadiang({ ...loading, loading: false });
   };
-  const ImprimirDescricao = async () => {
-    if (!pokeProps) return;
-  };
 
   useEffect(() => {
     setPokeProps(stock);
   }, []);
 
   useEffect(() => {
-    imprimirPokemons();
-    ImprimirDescricao();
+    printPokemons();
   }, [pokeProps]);
 
   function renderComponent() {
@@ -78,9 +71,8 @@ export default function Sobre() {
     }
 
     return (
-      <ContainerSobre>
+      <ContainerAbout>
         <ButtonExit />
-
         <ContainerPokemon>
           <ContainerImg>
             <ImgDeshboard
@@ -92,7 +84,7 @@ export default function Sobre() {
 
         <GraficTooltip item={pokeDetail} />
 
-        <TitleH>Habilidade</TitleH>
+        <TitleH>Abiliity</TitleH>
         <ContainerFlex>
           {pokeDetail?.abilities.map((item) => (
             <>
@@ -104,10 +96,9 @@ export default function Sobre() {
             </>
           ))}
         </ContainerFlex>
-        <TitleH>Detalhe</TitleH>
+        <TitleH>Description</TitleH>
         <TextDescription pokeProps={pokeProps} description={description} />
-        {/* <PokeEvolution pokeid={pokeProps?.id} /> */}
-      </ContainerSobre>
+      </ContainerAbout>
     );
   }
   return <>{renderComponent()}</>;

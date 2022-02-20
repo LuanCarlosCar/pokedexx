@@ -50,12 +50,35 @@ export const ContainerDescription = styled.div`
   opacity: 0;
   transition: 0.5s;
   transform: translateX(-50%) translateY(0px);
+
+  max-width: 100ch;
+  max-height: 20ch;
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  white-space: pre-wrap;
+
+  &::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: white; /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #87cefa; /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid #87cefa; /* creates padding around scroll thumb */
+  }
+
   p {
     line-height: 20px;
     color: #3ea1db;
+    -webkit-line-clamp: 10; /* number of lines to show */
+    -webkit-box-orient: horizontal;
   }
 `;
-export const Textname = styled.p`
+export const TextName = styled.p`
   margin-bottom: 5px;
   width: 110px;
   text-transform: capitalize;

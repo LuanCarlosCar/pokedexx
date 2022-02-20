@@ -11,7 +11,7 @@ import { PokeInfo, Typeloading } from "./type";
 import PreLoaderCard from "./components/PreLoaderCard";
 import { increment } from "store/Stock/Stock.actions";
 import { useDispatch } from "react-redux";
-import { adjustHue, desaturate, lighten, shade } from "polished";
+import { lighten } from "polished";
 
 export default function Card(props) {
   const { pokeName } = props;
@@ -50,7 +50,6 @@ export default function Card(props) {
     );
     const data = await api.json();
     setPokeColor(data);
-    console.log(pokeColor.color);
   };
 
   useEffect(() => {
@@ -70,7 +69,7 @@ export default function Card(props) {
       <StyleContainer
         onClick={() => dispatch(increment({ name: pokeName, id: pokeImg?.id }))}
       >
-        <LinkCard to="/sobre">
+        <LinkCard to="/detail">
           <PokeImage src={pokeImg?.sprites.other?.home?.front_default} />
           <TextTitle>{pokeName}</TextTitle>
           <TextName>#{pokeImg?.order}</TextName>
