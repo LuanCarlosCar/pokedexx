@@ -10,12 +10,14 @@ import React from "react";
 import { pokeLista } from "./type";
 import CampoProcura from "components/CampoProcura";
 import PreLoaderHomer from "./components/PreLoaderSobre";
+import ButtonNav from "./components/ButtonNav";
 
 export default function Home() {
   const [pokeList, setPokeList] = useState<pokeLista[]>();
   const [busca, setBusca] = useState("");
   const [serchLoading, setSerchLoading] = useState(false);
   const [pokedex, setPokedex] = useState<Number | any>(20);
+  const [invisibleHeader, setInvisibleHeader] = useState<boolean>(false);
   const pokeFilter = pokeList?.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(busca.toLowerCase())
   );
@@ -49,6 +51,25 @@ export default function Home() {
     return () => intersectionObserver.disconnect();
   }, []);
 
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) {
+        setInvisibleHeader(true);
+      } else {
+        setInvisibleHeader(false);
+      }
+    });
+    intersectionObserver.observe(document.querySelector<any>("#topo"));
+    return () => intersectionObserver.disconnect();
+  }, []);
+
+  function renderButton() {
+    if (!invisibleHeader) {
+      return <div />;
+    }
+    return <ButtonNav />;
+  }
+
   function renderPokemons() {
     if (serchLoading) {
       return (
@@ -75,6 +96,7 @@ export default function Home() {
           busca={busca.toLowerCase()}
         />
       </ContainerSerch>
+      {renderButton()}
       {renderPokemons()}
       {busca ? "" : <div id="sentinela">Carregando...</div>}
     </ContainerHomer>
