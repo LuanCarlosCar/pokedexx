@@ -78,7 +78,7 @@ export default function InputSerch(props) {
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
-          placeholder="Pesquise seu pokemon. Ex: Mewtwo"
+          placeholder="Search your pokemon. Ex: Mewtwo"
           inputProps={{ "aria-label": "search" }}
           fullWidth
           onChange={(ev) => {
